@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -66,7 +67,10 @@ const Trips: React.FC = () => {
       // Add the status field if it doesn't exist
       const formattedTrips = savedTrips.map((trip: any) => ({
         ...trip,
-        status: trip.status || "upcoming"
+        // Ensure status is one of the allowed values
+        status: ['upcoming', 'past', 'draft'].includes(trip.status) 
+          ? trip.status as "upcoming" | "past" | "draft"
+          : "upcoming" // Default to upcoming if status is invalid
       })) as Trip[];
       setTrips(formattedTrips);
     }
