@@ -21,7 +21,7 @@ type NavItem = {
 const navItems: NavItem[] = [
   { icon: Home, label: 'Home', path: '/' },
   { icon: Map, label: 'Explore', path: '/explore' },
-  { icon: Calendar, label: 'Trips', path: '/trips' },
+  { icon: Calendar, label: 'Calendar', path: '/calendar' },
   { icon: MessageSquare, label: 'Chat', path: '/chat' },
   { icon: User, label: 'Profile', path: '/profile' },
 ];
@@ -34,6 +34,10 @@ export function MobileNavbar() {
   const handleNavigation = (path: string) => {
     setActiveTab(path);
     navigate(path);
+  };
+
+  const handleAddTrip = () => {
+    navigate('/trips');
   };
 
   return (
@@ -60,6 +64,7 @@ export function MobileNavbar() {
         <Button 
           size="icon" 
           className="rounded-full h-12 w-12 shadow-lg bg-primary hover:bg-primary/90 transition-all duration-300 hover:scale-110 active:scale-95"
+          onClick={handleAddTrip}
         >
           <Plus size={24} />
         </Button>

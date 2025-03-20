@@ -11,6 +11,7 @@ import Explore from "./pages/Explore";
 import Trips from "./pages/Trips";
 import Chat from "./pages/Chat";
 import Profile from "./pages/Profile";
+import Calendar from "./pages/Calendar";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -31,6 +32,7 @@ const AnimatedRoutes = () => {
             <Route path="/explore" element={<Explore />} />
             <Route path="/trips" element={<Trips />} />
             <Route path="/chat" element={<Chat />} />
+            <Route path="/calendar" element={<Calendar />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
