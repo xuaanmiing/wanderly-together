@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Calendar as CalendarComponent } from "@/components/ui/calendar";
@@ -26,7 +25,7 @@ const Calendar: React.FC = () => {
     
     // If we have no trips yet, use the default ones
     if (savedTrips.length === 0) {
-      const defaultTrips = [
+      const defaultTrips: Trip[] = [
         { 
           id: 1, 
           title: "Tokyo Adventure", 
@@ -44,7 +43,12 @@ const Calendar: React.FC = () => {
       ];
       setTrips(defaultTrips);
     } else {
-      setTrips(savedTrips);
+      // Add the status field if it doesn't exist
+      const formattedTrips = savedTrips.map((trip: any) => ({
+        ...trip,
+        status: trip.status || "upcoming"
+      })) as Trip[];
+      setTrips(formattedTrips);
     }
   }, []);
 

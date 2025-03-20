@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -25,7 +24,7 @@ const Trips: React.FC = () => {
     
     // If we have no trips yet, use the default ones
     if (savedTrips.length === 0) {
-      const defaultTrips = [
+      const defaultTrips: Trip[] = [
         { 
           id: 1, 
           title: "Tokyo Adventure", 
@@ -68,7 +67,7 @@ const Trips: React.FC = () => {
       const formattedTrips = savedTrips.map((trip: any) => ({
         ...trip,
         status: trip.status || "upcoming"
-      }));
+      })) as Trip[];
       setTrips(formattedTrips);
     }
   }, []);
